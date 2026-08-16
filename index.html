@@ -257,38 +257,5 @@
             container.appendChild(balloon);
         }
 
-        const stickersList = ['🐸', '🐓', '🐖', '🦓', '🦊', '🐍'];
-        stickersList.forEach((emoji) => {
-            let stickerDiv = document.createElement('div');
-            stickerDiv.classList.add('sticker');
-            stickerDiv.innerHTML = emoji;
-            stickerDiv.style.left = Math.random() * 85 + 'vw';
-            stickerDiv.style.top = Math.random() * 85 + 'vh';
-            stickerDiv.style.animationDelay = Math.random() * 2 + 's';
-            stickerDiv.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            document.body.appendChild(stickerDiv);
-        });
+        <a href="silly_azz.html">Go to Silly Page</a>
 
-        function nextStage(current, next) {
-            document.getElementById('stage' + current).classList.add('hidden');
-            document.getElementById('stage' + next).classList.remove('hidden');
-        }
-
-        function runAway(button) {
-            const card = document.getElementById('stage2');
-            const cardWidth = card.clientWidth;
-            const cardHeight = card.clientHeight;
-
-            const newX = Math.random() * (cardWidth - button.clientWidth - 40) + 20;
-            const newY = Math.random() * (cardHeight - button.clientHeight - 80) + 20;
-
-            button.style.left = newX + 'px';
-            button.style.top = newY + 'px';
-        }
-
-        function celebrate() {
-            const cake = document.getElementById('cakeEmoji');
-            cake.innerHTML = "🍰✨";
-            document.getElementById('secretMessage').classList.remove('hidden');
-
-            for (let i = 0; i < 100; i++) {
