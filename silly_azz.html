@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification Portal 🔒</title>
+    <style>
+        :root {
+            --primary-yellow: #f1c40f;
+            --accent-yellow: #f39c12;
+            --darkest-yellow: #b58900;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            background-color: #fcf8e3;
+        }
+
+        /* 18-Photo Grid Collage Wrapper (3 Rows of 6) */
+        .collage-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 12px;
+            padding: 12px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .collage-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Semi-transparent blur overlay panel */
+        .blur-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            border: 3px dashed var(--primary-yellow);
+            border-radius: 24px;
+            padding: 50px 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+
+        h2 {
+            font-family: 'Georgia', serif;
+            color: var(--darkest-yellow);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #444;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .option-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            background-color: var(--primary-yellow);
+            color: #000000;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .option-btn:hover {
+            background-color: var(--accent-yellow);
+        }
+
+        #optionOld {
+            z-index: 999;
+            transition: all 0.2s ease-out; 
+        }
+
+        #finalScreen {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        #finalScreen.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .celebration-sticker {
+            max-width: 280px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: scale(0.8);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #finalScreen.active .celebration-sticker {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 18 Photo Background Grid with clean placeholders (3 Rows of 6) -->
+    <div class="collage-background">
+        <!-- ROW 1 -->
+        
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/2.jpg.png">
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/3.jpg.png">
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/4.jpg.png">
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/16.jpg.png">
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/6.jpg.png">
+
+        <!-- ROW 2 -->
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/7.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/8.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/9.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/10.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/11.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/14.jpg.png">
+
+
+        <!-- ROW 3 -->
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/13.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/14.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/15.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/16.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/17.jpg.png">
+       <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/18.jpg.png">        
+    </div>
+
+    <div class="blur-overlay"></div>
+
+    <div class="card" id="mainCard">
+        <h2>System Audit Required</h2>
+        <p>Please accurately declare your current status to finish verification:</p>
+        
+        <div class="options-container">
+            <button id="optionOld" class="option-btn" onclick="moveButton()">1. Old</button>
+            <button id="optionWayOld" class="option-btn" onclick="openFinalPage()">2. Way too old</button>
+        </div>
+    </div>
+
+    <!-- Final landing view triggered by option 2 with your personalized text -->
+    <div id="finalScreen">
+        <img src="C:/Users/arpit/OneDrive/Desktop/birthday project/1.jpg.png">
+        <h1 style="font-size: 3rem; color: var(--darkest-yellow); margin: 0 0 10px 0;">Access Granted! 🎉</h1>
+        <p style="font-size: 1.4rem; max-width: 600px; color: #34495e; margin: 0; line-height: 1.6;">
+            Identity verified successfully <br>   
+            You admitted it!!!!!! <br> 
+            belated Happy Birthday, <br>
+            <b>you certified bitch🖕 🎂🎈</b>
+        </p>
+    </div>
+
+    <script>
+        let attemptsCount = 0;
+
+        function moveButton() {
+            attemptsCount++;
+            const btn = document.getElementById('optionOld');
+            btn.style.position = 'fixed';
+
+            let step = attemptsCount % 5;
+            if (step === 0) step = 5; 
+
+            btn.style.left = 'auto';
+            btn.style.right = 'auto';
+            btn.style.top = 'auto';
+            btn.style.bottom = 'auto';
+            btn.style.transform = 'none';
+
+            if (step === 1) {
+                btn.style.right = '40px';
+                btn.style.top = '50%';
+                btn.style.transform = 'translateY(-50%)';
+            } 
+            else if (step === 2) {
+                btn.style.left = '40px';
+                btn.style.top = '40px';
+            } 
+            else if (step === 3) {
+                btn.style.bottom = '40px';
+                btn.style.left = '50%';
+                btn.style.transform = 'translateX(-50%)';
+            } 
+            else if (step === 4) {
+                btn.style.right = '40px';
+                btn.style.bottom = '40px';
+            } 
+            else if (step === 5) {
+                btn.style.left = '40px';
+                btn.style.bottom = '40px';
+            }
+        }
+
+        function openFinalPage() {
+            const screen = document.getElementById('finalScreen');
+            screen.style.display = 'flex';
+            setTimeout(() => {
+                screen.classList.add('active');
+            }, 10);
+        }
+    </script>
+</body>
+</html>
