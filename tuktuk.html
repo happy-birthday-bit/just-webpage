@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bitch! 🎉</title>
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --accent-green: #27ae60;
+            --darkest-green: #006400;
+            --pastel-bg: #e8f8f5;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--pastel-bg);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        .balloon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            opacity: 0.4;
+            animation: floatUp 8s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+        }
+
+        .sticker {
+            position: absolute;
+            font-size: 2.5rem;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            animation: gentleWobble 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentleWobble {
+            0% { transform: rotate(-10deg) scale(1); }
+            100% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+            max-width: 450px;
+            width: 90%;
+            border: 4px dashed var(--primary-green);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            color: var(--accent-green);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 24px 0;
+            background: #edfbf4;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px dotted var(--primary-green);
+        }
+
+        .time-box {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-green);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: var(--accent-green);
+        }
+
+        .quiz-buttons {
+            position: relative;
+            height: 70px;
+            margin-top: 20px;
+        }
+
+        #noBtn {
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        .cake {
+            font-size: 5rem;
+            cursor: pointer;
+            margin: 20px 0;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cake:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            position: fixed;
+            animation: confettiFall 3s linear forwards;
+            z-index: 999;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="balloon-bg" id="balloonContainer"></div>
+
+    <div class="card" id="stage1">
+ <h1>𝚈𝚘𝚞 𝚊𝚛𝚎 𝚘𝚏𝚏𝚒𝚌𝚒𝚊𝚕𝚕𝚢 🅾🅻🅳 𝚗𝚘𝚠                                                                                                                                                                        🚨</h1>
+        <p>see i still don't believe, that it's your real birth date BUT since it's approaching innnnnnnn......</p>
+        
+        <div class="timer-container">
+            <div class="time-box" id="days">00<span>Days</span></div>
+            <div class="time-box" id="hours">00<span>Hrs</span></div>
+            <div class="time-box" id="minutes">00<span>Min</span></div>
+            <div class="time-box" id="seconds">00<span>Sec</span></div>
+        </div>
+
+      <!-- LINK UPDATED TO POINT EXACTLY TO DRAGON.HTML -->
+        <a href="dragon.html" class="btn-verify">
+            Proceed to Verification ➔
+        </a>
+    </div>  
+
+    <div class="card hidden" id="stage2">
+        <h1>Security Check 🧐</h1>
+        <p>Are you officially the coolest, most chaotic, and best friend on this entire planet?</p>
+        <div class="quiz-buttons">
+            <button class="btn" id="yesBtn" onclick="nextStage('2', '3')">Obviously, Yes!</button>
+            <button class="btn" id="noBtn" onmouseover="runAway(this)" ontouchstart="runAway(this)">No, I'm boring</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="stage3">
+        <h1>✨ HAPPY BIRTHDAY! ✨</h1>
+        <p>Yay, you passed! You get a delicious virtual cake. Click it to blow out the candle and make a wish!</p>
+        
+        <div class="cake" id="cakeEmoji" onclick="celebrate()">🎂</div>
+        
+        <p style="font-size: 0.9rem; color: #888;">(Go ahead, tap it! It won't bite.)</p>
+        <div id="secretMessage" class="hidden">
+            <p><strong>My Wish For You:</strong> May your day be filled with endless snacks, zero adulting, and absolute chaos. Thanks for always being my partner in crime! 💖</p>
+        </div>
+    </div>
+
+    <script>
+        const birthdayDate = new Date('August 15, 2026 00:00:00').getTime();
+
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = birthdayDate - now;
+
+            const d = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const h = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = d < 10 ? '0' + d : d;
+            document.getElementById('hours').innerHTML = h < 10 ? '0' + h : h;
+            document.getElementById('minutes').innerHTML = m < 10 ? '0' + m : m;
+            document.getElementById('seconds').innerHTML = s < 10 ? '0' + s : s;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+            }
+        }, 1000);
+
+        const balloonColors = ['#a3e4d7', '#f9e79f', '#f5cba7', '#d5f5e3', '#e8f8f5'];
+        const container = document.getElementById('balloonContainer');
+        
+        for (let i = 0; i < 15; i++) {
+            let balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDelay = Math.random() * 6 + 's';
+            balloon.style.transform = `scale(${Math.random() * 0.6 + 0.6})`;
+            container.appendChild(balloon);
+        }
+
+        const stickersList = ['🐸', '🐓', '🐖', '🦓', '🦊', '🐍'];
+        stickersList.forEach((emoji) => {
+            let stickerDiv = document.createElement('div');
+            stickerDiv.classList.add('sticker');
+            stickerDiv.innerHTML = emoji;
+            stickerDiv.style.left = Math.random() * 85 + 'vw';
+            stickerDiv.style.top = Math.random() * 85 + 'vh';
+            stickerDiv.style.animationDelay = Math.random() * 2 + 's';
+            stickerDiv.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(stickerDiv);
+        });
+
+        function nextStage(current, next) {
+            document.getElementById('stage' + current).classList.add('hidden');
+            document.getElementById('stage' + next).classList.remove('hidden');
+        }
+
+        function runAway(button) {
+            const card = document.getElementById('stage2');
+            const cardWidth = card.clientWidth;
+            const cardHeight = card.clientHeight;
+
+            const newX = Math.random() * (cardWidth - button.clientWidth - 40) + 20;
+            const newY = Math.random() * (cardHeight - button.clientHeight - 80) + 20;
+
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+        }
+
+        function celebrate() {
+            const cake = document.getElementById('cakeEmoji');
+            cake.innerHTML = "🍰✨";
+            document.getElementById('secretMessage').classList.remove('hidden');
+
+            for (let i = 0; i < 100; i++) {
